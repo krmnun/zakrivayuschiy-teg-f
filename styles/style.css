@@ -1,6 +1,8 @@
 /* Здесь вы напишете основную часть стилей страницы.
 
 Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
+✦ theme-dark — класс тёмной темы
+✦ theme-light — класс светлой темы
 ✦ like-icon — для svg-иконки анимированного сердца
 ✦ card__like-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
@@ -8,9 +10,498 @@
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
+Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
 
+/* Декор */
+.decor-element {
+  border: 2px solid var(--border-decor);
+}
+
+.text-accent {
+  font-family: "PressStart2P", sans-serif;
+  font-size: var(--accent-text-size);
+  font-weight: var(--accent-text-weight);
+  color: var(--text-color);
+}
+
 .page {
-  min-inline-size: 320px;
+  min-inline-size: 375px;
   min-block-size: 100dvb;
+  font-family: "Inter-Variable", sans-serif;
+  font-size: 18px;
+  font-variation-settings: "wght" var(--card-content-font-weight, 400);
+  font-weight: var(--card-content-font-weight);
+  background-color: var(--background-color);
+  background-image: var(--grid-background-pattern);
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 100px 0 103px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  outline: 1px solid rgb(0, 224, 86);
+}
+
+@media (width <= 375px) {
+  .page {
+    padding: 100px 0;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  inline-size: clamp(23.438rem, 16.373rem + 30.14vw, 43.5rem);
+  background-color: var(--background-color);
+  margin-block-end: 100px;
+}
+
+@media (width <= 375px) {
+  .header {
+    max-inline-size: 375px;
+  }
+}
+
+.header-logo {
+  font-size: clamp(3.063rem, 2.71rem + 1.5vw, 4.063rem);
+  text-decoration: none;
+  margin-block-start: 136px;
+}
+
+@media (width <= 375px) {
+  .header-logo {
+    margin-block-start: 120px;
+  }
+}
+
+.header-logo:focus {
+  outline: none;
+}
+
+.header-logo:focus-visible {
+  outline: 5px solid var(--animation-color-decor);
+  transition: outline 0.3s ease;
+}
+
+.header-title {
+  font-size: 23px;
+  color: var(--text-color);
+  line-height: 25px;
+  margin-block-start: 18px;
+  text-transform: uppercase;
+}
+
+@media (width <= 375px) {
+  .header-title {
+    font-size: 14px;
+    line-height: 14px;
+    margin-block-start: 21px;
+  }
+}
+
+.header__theme-menu {
+  margin-block-start: 23px;
+  padding-block-end: 25px;
+  margin-inline-start: 17px;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-left: 0;
+}
+
+.theme-menu__item {
+  position: relative;
+  font-family: "PressStart2P", sans-serif;
+  font-size: 14px;
+  font-weight: var(--accent-text-weight);
+}
+
+.theme-menu__button {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.theme-menu__button:disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  inset-inline-start: -15px;
+  animation: arrow 0.5s ease-in-out infinite alternate;
+}
+
+.theme-menu__button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+}
+
+.theme-menu__button:focus-visible {
+  outline: none;
+  opacity: 0.6;
+}
+
+.theme-menu__button::after {
+  content: "";
+  position: absolute;
+  inset-block-end: -3px;
+  inset-inline-start: 0;
+  background-color: currentColor;
+  opacity: 0.6;
+  inline-size: 0;
+  block-size: 2px;
+  transition: inline-size 0.3s ease;
+}
+
+.theme-menu__button:focus-visible::after {
+  inline-size: 100%;
+  opacity: 0.6;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+@media (width <= 375px) {
+  .content {
+    max-inline-size: 375px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  inline-size: clamp(23.438rem, 16.373rem + 30.14vw, 43.5rem);
+}
+
+.card-title {
+  padding: 5px 8px;
+  font-family: inherit;
+  color: var(--text-color);
+  font-variation-settings: "wght" var(--card-header-font-weight);
+  font-size: inherit;
+}
+
+@media (width <= 375px) {
+  .card-title {
+    padding: 4px 10px 6px 10px;
+  }
+}
+
+.card-content {
+  position: relative;
+}
+
+.card-label {
+  position: absolute;
+  inset-inline-end: 25px;
+  inset-block-start: 27px;
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
+  font-family: "PressStart2P", sans-serif;
+  font-size: 14px;
+  color: var(--text-color);
+  text-shadow: 1px 1px var(--background-color), -1px -1px var(--background-color);
+  z-index: 1;
+}
+
+@supports (-webkit-text-stroke: 1px var(--background-color)) {
+  .card-label {
+    -webkit-text-stroke: 1px var(--background-color);
+    text-shadow: none;
+  }
+}
+
+@media (width <= 375px) {
+  .card-label {
+    inset-inline-end: 13px;
+    inset-block-start: 27px;
+  }
+}
+
+.card-img {
+  inline-size: 100%;
+  block-size: 700px;
+  object-fit: cover;
+  object-position: center;
+  border-block-start: 2px solid var(--border-decor);
+  border-block-end: 2px solid var(--border-decor);
+}
+
+@media (width <= 375px) {
+  .card-img {
+    inline-size: 100%;
+    block-size: 375px;
+  }
+}
+
+.brightness {
+  filter: brightness(200%);
+}
+
+.contrast {
+  filter: contrast(200%);
+}
+
+.blur {
+  filter: blur(0.5rem);
+}
+
+.opacity {
+  filter: opacity(0.5);
+}
+
+.grayscale {
+  filter: grayscale(0.8);
+}
+
+.saturate {
+  filter: saturate(158%);
+}
+
+.set-filter {
+  filter: sepia(1) contrast(2) brightness(200%);
+}
+
+.card-description {
+  padding: 21px 24px 25px 23px;
+}
+
+.card-text {
+  font-family: "Inter-Variable", sans-serif;
+  font-size: 18px;
+  color: var(--text-color);
+  font-weight: var(--card-content-font-weight);
+  inline-size: clamp(20.063rem, 12.954rem + 30.33vw, 40.25rem);
+}
+
+.card-text:not(:last-child) {
+  padding-block-end: 26px;
+}
+
+.card-interaction-element {
+  display: flex;
+  justify-content: end;
+  padding-block-end: 25px;
+  padding-inline-end: 24px;
+  gap: 5px;
+}
+
+.card__icon-button {
+  display: flex;
+  background-color: transparent;
+  inline-size: 39px;
+  block-size: 39px;
+  padding: 0;
+  border: 2px solid transparent;
+  transition: border 0.3s linear;
+}
+
+.card__icon-button:hover {
+  cursor: pointer;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--border-decor);
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  inline-size: clamp(23.438rem, 16.373rem + 30.14vw, 43.5rem);
+}
+
+@media (width <= 375px) {
+  .footer {
+    max-inline-size: 375px;
+  }
+}
+
+.card__like-button {
+  padding: 9px 17px;
+  inline-size: 130px;
+  block-size: 39px;
+}
+
+.save-button {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  inline-size: 337px;
+  block-size: 54px;
+  padding: 18.5px 19px;
+}
+
+@media (width <= 375px) {
+  .save-button {
+    flex-direction: column;
+    inline-size: 308px;
+    block-size: 82px;
+    padding: 12px 19.5px;
+  }
+}
+
+.button-decor:hover {
+  cursor: pointer;
+}
+
+.button-decor {
+  position: relative;
+  background-color: var(--background-color);
+  border: 2px solid var(--border-decor);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.button-decor:focus {
+  outline: none;
+}
+
+.button-decor:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 0 var(--animation-color-decor);
+}
+
+.button-decor::after {
+  content: "";
+  position: absolute;
+  inline-size: 100%;
+  block-size: 100%;
+  background-color: var(--animation-color-decor);
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  translate: -100% 0;
+  transition: translate 0.5s ease-in-out;
+  z-index: 0;
+}
+
+.button-decor:hover::after {
+  translate: 0 0;
+}
+
+.button__text {
+  position: relative;
+  font-family: "PressStart2P", sans-serif;
+  font-weight: var(--accent-text-weight);
+  font-size: 14px;
+  text-wrap: nowrap;
+  color: var(--button-text-color-primary);
+  mix-blend-mode: difference;
+  z-index: 1;
+}
+
+.save-button-text {
+  text-transform: uppercase;
+}
+
+.save-item {
+  position: relative;
+  inline-size: 21px;
+  block-size: 21px;
+  mix-blend-mode: difference;
+  z-index: 1;
+  color: var(--floppy-icon-color);
+}
+
+@media (width <= 375px) {
+  .save-item {
+    inline-size: 28px;
+    block-size: 28px;
+  }
+}
+
+.dialog-windows {
+  min-inline-size: 357px;
+  padding: 30px 30px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+}
+
+@media (width <= 375px) {
+  .dialog-windows {
+    min-inline-size: 345px;
+    padding: 30px 42px;
+  }
+}
+
+.dialog-windows[open] {
+  display: flex;
+}
+
+.dialog-windows .save-item {
+  inline-size: 39px;
+  block-size: 39px;
+  object-fit: cover;
+  align-self: center;
+}
+
+.dialog-windows::backdrop {
+  background: #000;
+  opacity: 0.75;
+}
+
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-content {
+  display: flex;
+  gap: 20px;
+}
+
+.dialog-description {
+  font-family: "PressStart2P", sans-serif;
+  font-weight: var(--accent-text-weight);
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--text-color);
+  text-transform: uppercase;
+  inline-size: 234px;
+}
+
+@media (width <= 375px) {
+  .dialog-description {
+    inline-size: 198px;
+  }
+}
+
+.dialog-windows .save-button {
+  inline-size: 293px;
+  block-size: 38px;
+}
+
+@media (width <= 375px) {
+  .dialog-windows .save-button {
+    inline-size: 257px;
+  }
 }

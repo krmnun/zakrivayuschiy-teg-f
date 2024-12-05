@@ -56,6 +56,9 @@
   inline-size: clamp(23.438rem, 16.373rem + 30.14vw, 43.5rem);
   background-color: var(--background-color);
   margin-block-end: 100px;
+  width: 696px;
+  height: 364px;
+  flex-shrink: 0;
 }
 
 @media (width <= 375px) {

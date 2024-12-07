@@ -14,10 +14,12 @@
 */
 
 /* Декор */
+/* Стили для декоративного элемента */
 .decor-element {
   border: 2px solid var(--border-decor);
 }
 
+/* Стили для акцентного текста */
 .text-accent {
   font-family: "PressStart2P", sans-serif;
   font-size: var(--accent-text-size);
@@ -25,6 +27,7 @@
   color: var(--text-color);
 }
 
+/* Основные стили для страницы */
 .page {
   min-inline-size: 375px;
   min-block-size: 100dvb;
@@ -49,6 +52,7 @@
   }
 }
 
+/* Стили для заголовка */
 .header {
   display: flex;
   flex-direction: column;
@@ -56,7 +60,6 @@
   inline-size: clamp(23.438rem, 16.373rem + 30.14vw, 43.5rem);
   background-color: var(--background-color);
   margin-block-end: 100px;
-  width: 696px;
   height: 364px;
   flex-shrink: 0;
 }
@@ -64,9 +67,12 @@
 @media (width <= 375px) {
   .header {
     max-inline-size: 375px;
+    height: 323px;
+    flex-shrink: 0;
   }
 }
 
+/* Стили для логотипа в заголовке */
 .header-logo {
   font-size: clamp(3.063rem, 2.71rem + 1.5vw, 4.063rem);
   text-decoration: none;
@@ -88,6 +94,7 @@
   transition: outline 0.3s ease;
 }
 
+/* Стили для заголовка в заголовке */
 .header-title {
   font-size: 23px;
   color: var(--text-color);
@@ -104,6 +111,7 @@
   }
 }
 
+/* Стили для меню темы в заголовке */
 .header__theme-menu {
   margin-block-start: 23px;
   padding-block-end: 25px;
@@ -175,6 +183,7 @@
   opacity: 0.6;
 }
 
+/* Стили для контента */
 .content {
   display: flex;
   flex-direction: column;
@@ -188,6 +197,7 @@
   }
 }
 
+/* Стили для карточки */
 .card {
   display: flex;
   flex-direction: column;
@@ -256,6 +266,7 @@
   }
 }
 
+/* Фильтры для изображений */
 .brightness {
   filter: brightness(200%);
 }
@@ -284,6 +295,7 @@
   filter: sepia(1) contrast(2) brightness(200%);
 }
 
+/* Стили для описания карточки */
 .card-description {
   padding: 21px 24px 25px 23px;
 }
@@ -300,6 +312,7 @@
   padding-block-end: 26px;
 }
 
+/* Стили для элементов взаимодействия в карточке */
 .card-interaction-element {
   display: flex;
   justify-content: end;
@@ -334,6 +347,7 @@
   opacity: 0;
 }
 
+/* Стили для футера */
 .footer {
   display: flex;
   justify-content: center;
@@ -346,12 +360,14 @@
   }
 }
 
+/* Стили для кнопки лайка в карточке */
 .card__like-button {
   padding: 9px 17px;
   inline-size: 130px;
   block-size: 39px;
 }
 
+/* Стили для кнопки сохранения */
 .save-button {
   display: flex;
   gap: 8px;
@@ -430,7 +446,6 @@
   block-size: 21px;
   mix-blend-mode: difference;
   z-index: 1;
-  color: var(--floppy-icon-color);
 }
 
 @media (width <= 375px) {
@@ -440,6 +455,7 @@
   }
 }
 
+/* Стили для диалогового окна */
 .dialog-windows {
   min-inline-size: 357px;
   padding: 30px 30px;

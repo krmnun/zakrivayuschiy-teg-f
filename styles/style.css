@@ -31,7 +31,7 @@
 .page {
   min-inline-size: 375px;
   min-block-size: 100dvb;
-  font-family: "Inter-Variable", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 18px;
   font-variation-settings: "wght" var(--card-content-font-weight, 400);
   font-weight: var(--card-content-font-weight);
@@ -76,7 +76,7 @@
 .header-logo {
   font-size: clamp(3.063rem, 2.71rem + 1.5vw, 4.063rem);
   text-decoration: none;
-  margin-block-start: 136px;
+  margin-block-start: 128px;
 }
 
 @media (width <= 375px) {
@@ -301,7 +301,7 @@
 }
 
 .card-text {
-  font-family: "Inter-Variable", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 18px;
   color: var(--text-color);
   font-weight: var(--card-content-font-weight);

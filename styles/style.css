@@ -43,7 +43,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  outline: 1px solid rgb(0, 224, 86);
 }
 
 @media (width <= 375px) {
@@ -188,7 +187,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 51px;
+  height: 760px;
 }
 
 @media (width <= 375px) {
@@ -203,6 +203,7 @@
   flex-direction: column;
   background-color: var(--background-color);
   inline-size: clamp(23.438rem, 16.373rem + 30.14vw, 43.5rem);
+  position: relative;
 }
 
 .card-title {
@@ -254,6 +255,7 @@
   inline-size: 100%;
   block-size: 700px;
   object-fit: cover;
+  display: block;
   object-position: center;
   border-block-start: 2px solid var(--border-decor);
   border-block-end: 2px solid var(--border-decor);
@@ -297,7 +299,7 @@
 
 /* Стили для описания карточки */
 .card-description {
-  padding: 21px 24px 25px 23px;
+  padding: 25px;
 }
 
 .card-text {
@@ -306,18 +308,32 @@
   color: var(--text-color);
   font-weight: var(--card-content-font-weight);
   inline-size: clamp(20.063rem, 12.954rem + 30.33vw, 40.25rem);
+  line-height: 21px;
 }
 
 .card-text:not(:last-child) {
-  padding-block-end: 26px;
+  margin-block-end: 25px;
+}
+
+@media (width <= 375px) {
+  .card-description {
+    padding: 25px 28px 25px 25px;
+  }
+
+  .card-text {
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: var(--card-content-font-weight);
+    inline-size: clamp(20.063rem, 12.954rem + 30.33vw, 40.25rem);
+    line-height: 21px;
+  }
 }
 
 /* Стили для элементов взаимодействия в карточке */
 .card-interaction-element {
   display: flex;
   justify-content: end;
-  padding-block-end: 25px;
-  padding-inline-end: 24px;
   gap: 5px;
 }
 
@@ -460,6 +476,16 @@
   .save-item {
     inline-size: 28px;
     block-size: 28px;
+  }
+
+  .save-icon {
+    position: relative;
+    inline-size: 21px;
+    block-size: 21px;
+    mix-blend-mode: difference;
+    z-index: 1;
+    width: 28px;
+    height: 28px;
   }
 }
 
